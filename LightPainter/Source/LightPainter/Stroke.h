@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/InstancedStaticMeshComponent.h"
+
 #include "Stroke.generated.h"
 
 UCLASS()
@@ -17,18 +19,12 @@ public:
 	void Update(FVector CursorLocation);
 
 private:
-	class USplineMeshComponent* CreateSplineMesh();
-
 	// Components
 	UPROPERTY(EditAnywhere)
 	class USceneComponent* Root;
 
-	// Config
-	UPROPERTY(EditDefaultsOnly)
-	class UStaticMesh* SplineMesh;
-
-	UPROPERTY(EditDefaultsOnly)
-	class UMaterialInterface* SplineMaterial;
+	UPROPERTY(EditAnywhere)
+	UInstancedStaticMeshComponent* StrokeMeshes;
 
 	// State
 	UPROPERTY(VisibleAnywhere)
