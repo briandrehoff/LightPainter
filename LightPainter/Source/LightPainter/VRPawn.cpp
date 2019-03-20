@@ -3,6 +3,7 @@
 #include "VRPawn.h"
 #include "Camera/CameraComponent.h"
 #include "Engine/World.h"
+#include "Components/InputComponent.h"
 
 AVRPawn::AVRPawn()
 {
@@ -37,3 +38,10 @@ void AVRPawn::BeginPlay()
 	}
 }
 
+void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPawn::RightTriggerPressed);
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPawn::RightTriggerReleased);
+}
