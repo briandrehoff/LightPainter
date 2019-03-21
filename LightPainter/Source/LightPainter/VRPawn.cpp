@@ -21,20 +21,20 @@ void AVRPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (HandControllerClass)
+	if (PaintBrushHandControllerClass)
 	{
-		LeftHandController = GetWorld()->SpawnActor<AHandController>(HandControllerClass);
-		if (LeftHandController != nullptr)
+		LeftPaintBrushHandController = GetWorld()->SpawnActor<AHandControllerBase>(PaintBrushHandControllerClass);
+		if (LeftPaintBrushHandController != nullptr)
 		{
-			LeftHandController->SetHand(EControllerHand::Left);
-			LeftHandController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+			LeftPaintBrushHandController->SetHand(EControllerHand::Left);
+			LeftPaintBrushHandController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 		}
 
-		RightHandController = GetWorld()->SpawnActor<AHandController>(HandControllerClass);
-		if (RightHandController != nullptr)
+		RightPaintBrushHandController = GetWorld()->SpawnActor<AHandControllerBase>(PaintBrushHandControllerClass);
+		if (RightPaintBrushHandController != nullptr)
 		{
-			RightHandController->SetHand(EControllerHand::Right);
-			RightHandController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+			RightPaintBrushHandController->SetHand(EControllerHand::Right);
+			RightPaintBrushHandController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 		}
 	}
 }
