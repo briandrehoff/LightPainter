@@ -19,11 +19,14 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-public:
-	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
-	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
 
 private:
+	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
+	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased();; }
+
+	void Save();
+	void Load();
+
 	// Config
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AHandController> HandControllerClass;
