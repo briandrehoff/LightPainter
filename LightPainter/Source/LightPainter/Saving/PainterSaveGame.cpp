@@ -2,6 +2,9 @@
 
 #include "PainterSaveGame.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
+#include "Stroke.h"
 
 UPainterSaveGame * UPainterSaveGame::Create()
 {
@@ -16,4 +19,31 @@ bool UPainterSaveGame::Save()
 UPainterSaveGame * UPainterSaveGame::Load()
 {
 	return Cast<UPainterSaveGame>(UGameplayStatics::LoadGameFromSlot("Test", 0));
+}
+
+void UPainterSaveGame::SerializeFromWorld(UWorld * World)
+{
+	Strokes.Empty();
+	for (TActorIterator<AStroke> StrokeIterator(World); StrokeIterator; ++StrokeIterator)
+	{
+		// Serialize
+		Strokes.Add(StrokeIterator->GetClass());
+	}
+}
+
+void UPainterSaveGame::DeserializeToWorld(UWorld * World)
+{
+	ClearWorld(World);
+	for (TSubclassOf<AStroke> StrokeClass : Strokes)
+	{
+		World->SpawnActor<AStroke>(StrokeClass);
+	}
+}
+
+void UPainterSaveGame::ClearWorld(UWorld * World)
+{
+	for (TActorIterator<AStroke> StrokeIterator(World); StrokeIterator; ++StrokeIterator)
+	{
+		StrokeIterator->Destroy();
+	}
 }
