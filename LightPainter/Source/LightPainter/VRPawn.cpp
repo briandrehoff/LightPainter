@@ -4,6 +4,7 @@
 #include "Camera/CameraComponent.h"
 #include "Engine/World.h"
 #include "Components/InputComponent.h"
+#include "Saving/PainterSaveGame.h"
 
 AVRPawn::AVRPawn()
 {
@@ -36,6 +37,9 @@ void AVRPawn::BeginPlay()
 			RightHandController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 		}
 	}
+
+	UPainterSaveGame* Painting = UPainterSaveGame::Create();
+	Painting->Save();
 }
 
 void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
