@@ -26,17 +26,16 @@ void UPainterSaveGame::SerializeFromWorld(UWorld * World)
 	Strokes.Empty();
 	for (TActorIterator<AStroke> StrokeIterator(World); StrokeIterator; ++StrokeIterator)
 	{
-		// Serialize
-		Strokes.Add(StrokeIterator->GetClass());
+		Strokes.Add(StrokeIterator->SerializeToStruct());
 	}
 }
 
 void UPainterSaveGame::DeserializeToWorld(UWorld * World)
 {
 	ClearWorld(World);
-	for (TSubclassOf<AStroke> StrokeClass : Strokes)
+	for (FStrokeState StrokeState : Strokes)
 	{
-		World->SpawnActor<AStroke>(StrokeClass);
+		AStroke::SpawnAndDeserializeFromStruct(World, StrokeState);
 	}
 }
 

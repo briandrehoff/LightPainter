@@ -6,6 +6,18 @@
 #include "GameFramework/SaveGame.h"
 #include "PainterSaveGame.generated.h"
 
+USTRUCT()
+struct FStrokeState
+{
+	GENERATED_BODY()
+
+	UPROPERTY(VisibleAnywhere)
+	TSubclassOf<class AStroke> Class;
+
+	UPROPERTY(VisibleAnywhere)
+	TArray<FVector> ControlPoints;
+};
+
 /**
  * 
  */
@@ -33,6 +45,6 @@ private:
 	FString State;
 
 	UPROPERTY(VisibleAnywhere)
-	TArray<TSubclassOf<class AStroke>> Strokes;
+	TArray<FStrokeState> Strokes;
 
 };
