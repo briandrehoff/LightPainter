@@ -38,8 +38,8 @@ private:
 	class UCameraComponent* Camera;
 	
 	// Reference
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere)
 	AHandControllerBase* LeftPaintBrushHandController;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere)
 	AHandControllerBase* RightPaintBrushHandController;
 };
