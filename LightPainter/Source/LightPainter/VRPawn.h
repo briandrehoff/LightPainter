@@ -42,4 +42,8 @@ private:
 	AHandControllerBase* LeftPaintBrushHandController;
 	UPROPERTY(VisibleAnywhere)
 	AHandControllerBase* RightPaintBrushHandController;
+
+	// State
+	UPROPERTY()
+	FString CurrentSlotName;
 };

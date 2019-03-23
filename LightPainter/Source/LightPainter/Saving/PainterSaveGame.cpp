@@ -5,20 +5,23 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "Stroke.h"
+#include "Guid.h"
 
 UPainterSaveGame * UPainterSaveGame::Create()
 {
-	return Cast<UPainterSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));;
+	UPainterSaveGame* NewSaveGame = Cast<UPainterSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));
+	NewSaveGame->SlotName = FGuid::NewGuid().ToString();
+	return NewSaveGame;
 }
 
 bool UPainterSaveGame::Save()
 {
-	return UGameplayStatics::SaveGameToSlot(this, "Test", 0);
+	return UGameplayStatics::SaveGameToSlot(this, SlotName, 0);
 }
 
-UPainterSaveGame * UPainterSaveGame::Load()
+UPainterSaveGame * UPainterSaveGame::Load(FString SlotName)
 {
-	return Cast<UPainterSaveGame>(UGameplayStatics::LoadGameFromSlot("Test", 0));
+	return Cast<UPainterSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
 }
 
 void UPainterSaveGame::SerializeFromWorld(UWorld * World)
