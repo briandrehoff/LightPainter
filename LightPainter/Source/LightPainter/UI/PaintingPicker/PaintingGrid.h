@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/UniformGridPanel.h"
+#include "PaintingGridCard.h"
 
 #include "PaintingGrid.generated.h"
 
@@ -19,7 +20,7 @@ class LIGHTPAINTER_API UPaintingGrid : public UUserWidget
 public:
 
 	UFUNCTION(BlueprintCallable)
-	void AddPainting(int32 PaintingIndex);
+	void AddPainting(int32 PaintingIndex, FString PaintingName);
 
 protected:
 	UPROPERTY(BlueprintReadonly, VisibleANywhere, meta = (BindWidget))
@@ -27,6 +28,6 @@ protected:
 
 private:
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<UUserWidget> GridCardClass;
+	TSubclassOf<UPaintingGridCard> GridCardClass;
 
 };
