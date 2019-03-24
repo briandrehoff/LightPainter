@@ -15,11 +15,15 @@ class LIGHTPAINTER_API APaintingPicker : public AActor
 	
 public:	
 	APaintingPicker();
+	void AddPainting();
+	void ToggleDeleteMode();
 
 protected:
 	virtual void BeginPlay() override;
 
 private:
+	void RefreshSlots();
+
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
 
