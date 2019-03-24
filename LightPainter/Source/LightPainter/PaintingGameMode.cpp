@@ -44,3 +44,9 @@ void APaintingGameMode::Load()
 		UE_LOG(LogTemp, Warning, TEXT("Game slot not found: %s"), *SlotName);
 	}
 }
+
+void APaintingGameMode::SaveAndQuit()
+{
+	Save();
+	UGameplayStatics::OpenLevel(GetWorld(), "MainMenu");
+}
