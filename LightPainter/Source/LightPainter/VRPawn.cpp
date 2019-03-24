@@ -23,12 +23,6 @@ void AVRPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UPainterSaveGame* Painting = UPainterSaveGame::Create();
-	if (Painting && Painting->Save())
-	{
-		CurrentSlotName = Painting->GetSlotName();
-	}
-
 	if (PaintBrushHandControllerClass)
 	{
 		LeftPaintBrushHandController = GetWorld()->SpawnActor<AHandControllerBase>(PaintBrushHandControllerClass);
