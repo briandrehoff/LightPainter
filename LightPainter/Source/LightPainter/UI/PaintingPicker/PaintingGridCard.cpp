@@ -15,6 +15,6 @@ void UPaintingGridCard::SetPaintingName(FString NewPaintingName)
 
 void UPaintingGridCard::CardButtonClicked()
 {
-	UStereoLayerFunctionLibrary::ShowSplashScreen(); // This is required to prevent the long hang that happens when you open the level
+	//UStereoLayerFunctionLibrary::ShowSplashScreen(); // This is required to prevent the long hang that happens when you open the level
 	UGameplayStatics::OpenLevel(GetWorld(), "Canvas", true, "SlotName=" + PaintingName);
 }
