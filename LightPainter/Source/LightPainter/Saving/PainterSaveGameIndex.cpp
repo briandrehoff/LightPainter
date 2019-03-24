@@ -7,12 +7,6 @@ const FString UPainterSaveGameIndex::SLOT_NAME = "PaintingIndex";
 
 bool UPainterSaveGameIndex::Save()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Painting Index:"));
-	for (FString SlotName : UPainterSaveGameIndex::Load()->GetSlotNames())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Painting name: %s"), *SlotName);
-	}
-
 	return UGameplayStatics::SaveGameToSlot(this, SLOT_NAME, 0);
 }
 
