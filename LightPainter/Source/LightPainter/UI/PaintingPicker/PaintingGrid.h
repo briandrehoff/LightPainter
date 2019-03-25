@@ -6,6 +6,8 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/UniformGridPanel.h"
 #include "PaintingGridCard.h"
+#include "Components/HorizontalBox.h"
+#include "PaginationDot.h"
 
 #include "PaintingGrid.generated.h"
 
@@ -20,15 +22,22 @@ class LIGHTPAINTER_API UPaintingGrid : public UUserWidget
 public:
 	UFUNCTION(BlueprintCallable)
 	void AddPainting(int32 PaintingIndex, FString PaintingName);
+	void AddPaginationDot(bool Active);
 
 	void ClearPaintings();
 
 protected:
-	UPROPERTY(BlueprintReadonly, VisibleANywhere, meta = (BindWidget))
+	UPROPERTY(BlueprintReadonly, VisibleAnywhere, meta = (BindWidget))
 	UUniformGridPanel* PaintingGrid;
+
+	UPROPERTY(BlueprintReadonly, VisibleAnywhere, meta = (BindWidget))
+	UHorizontalBox* PaginationDots;
 
 private:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UPaintingGridCard> GridCardClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UPaginationDot> PaginationDotClass;
 
 };
