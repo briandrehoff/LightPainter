@@ -3,6 +3,7 @@
 #include "PaintingGrid.h"
 #include "Components/SizeBox.h"
 #include "HorizontalBoxSlot.h"
+#include "Components/Image.h"
 
 void UPaintingGrid::AddPainting(int32 PaintingIndex, FString PaintingName)
 {
@@ -27,6 +28,13 @@ void UPaintingGrid::ClearPaintings()
 
 		CardContainer->ClearChildren();
 	}
+}
+
+void UPaintingGrid::ClearDots()
+{
+	if (!PaginationDots) return;
+
+	PaginationDots->ClearChildren();
 }
 
 int32 UPaintingGrid::GetNumberOfSlots() const
