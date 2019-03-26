@@ -24,13 +24,17 @@ private:
 	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
 	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
 
+	void PaginateRightAxisInput(float AxisValue);
+
 	// Config
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AHandControllerBase> RightHandControllerClass;
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AHandControllerBase> LeftHandControllerClass;
+	UPROPERTY(EditDefaultsOnly)
+	float PaginationThumbstickThreshold = 0.8;
 
-	//Components
+	// Components
 	UPROPERTY(EditDefaultsOnly)
 	class USceneComponent* VRRoot;
 	UPROPERTY(VisibleAnywhere)
@@ -41,4 +45,7 @@ private:
 	AHandControllerBase* LeftHandController;
 	UPROPERTY(VisibleAnywhere)
 	AHandControllerBase* RightHandController;
+
+	// State
+	int32 LastPaginationOffset = 0;
 };
