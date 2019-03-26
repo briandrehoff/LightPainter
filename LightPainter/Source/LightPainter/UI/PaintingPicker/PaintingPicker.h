@@ -18,6 +18,7 @@ public:
 	APaintingPicker();
 	void AddPainting();
 	void ToggleDeleteMode();
+	void UpdateCurrentPage(int32 Offset);
 
 protected:
 	virtual void BeginPlay() override;

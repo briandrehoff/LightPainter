@@ -25,6 +25,7 @@ private:
 	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
 
 	void PaginateRightAxisInput(float AxisValue);
+	void UpdateCurrentPage(int32 Offset);
 
 	// Config
 	UPROPERTY(EditDefaultsOnly)
@@ -32,7 +33,7 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AHandControllerBase> LeftHandControllerClass;
 	UPROPERTY(EditDefaultsOnly)
-	float PaginationThumbstickThreshold = 0.8;
+	float PaginationThumbstickThreshold = 0.9;
 
 	// Components
 	UPROPERTY(EditDefaultsOnly)
